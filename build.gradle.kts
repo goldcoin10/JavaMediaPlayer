@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    id("application")
     id("org.openjfx.javafxplugin") version "0.1.0"
     id("com.gradleup.shadow") version "8.3.0"
 }
@@ -28,4 +28,8 @@ tasks.test {
 javafx {
     version = "21"
     modules( "javafx.media", "javafx.swing" )
+}
+
+application {
+    mainClass.set("com.github.goldcoin10.Main")
 }
