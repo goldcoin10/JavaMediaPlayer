@@ -19,10 +19,9 @@ public class Audio {
             Media media = new Media(filePath);
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.play();
-            mediaPlayer.dispose();
         });
     }
-    public void printFilePath(){
+    public static void printFilePath(){
         System.out.println(filePath); // Only call this for debugging
     }
 
@@ -30,5 +29,10 @@ public class Audio {
         Platform.runLater(() -> {
             if (mediaPlayer != null) mediaPlayer.pause();
         });
+    }
+
+    public static void disposeData(){
+        mediaPlayer.stop();
+        mediaPlayer.dispose();
     }
 }
