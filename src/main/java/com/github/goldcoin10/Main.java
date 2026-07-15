@@ -28,7 +28,7 @@ class Main implements Runnable {
         frame.setLayout(new GridBagLayout());
         frame.setSize(320, 240);
         frame.setJMenuBar(Menu.renderMenuBar());
-        frame.add(Buttons.renderButtons());
+        frame.add(Frame.renderFrame());
         frame.setVisible(true);
     }
 

@@ -8,24 +8,16 @@ import javafx.util.Duration;
 public class Audio {
     static boolean jfxinit = false;
     static MediaPlayer mediaPlayer;
-    static String filePath = Main.filepath.toURI().toString();
+    static String filePath;
+    static Media media;
 
     public static void playAudio(){
-        if (!jfxinit) {
-            Platform.startup(() -> {});
-            Platform.runLater(() -> {
-                Media media = new Media(filePath);
-                mediaPlayer = new MediaPlayer(media);
-            });
-            jfxinit = true;
-        }
-
         Platform.runLater(() -> {
             mediaPlayer.play();
         });
     }
-    public static void printFilePath(){
-        System.out.println(filePath); // Only call this for debugging
+    public void printFilePath(){
+        System.out.println(filePath);
     }
 
     public static void pauseAudio() {
@@ -35,16 +27,22 @@ public class Audio {
     }
 
     public static void disposeData() {
-        mediaPlayer.stop();
-        mediaPlayer.dispose();
+        if(mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+        }
     }
 
     public static double currentTime() {
-        if(mediaPlayer.getCurrentTime().toSeconds() == 0) return 0;
+        if(mediaPlayer == null) return 0;
+        else if(mediaPlayer.getCurrentTime().toSeconds() == 0) return 0;
         else return mediaPlayer.getCurrentTime().toSeconds();
     }
 
     public static double songLength() {
+        if(mediaPlayer == null) {
+            return 0;
+        }
         return mediaPlayer.getCycleDuration().toSeconds();
     }
 
