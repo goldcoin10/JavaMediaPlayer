@@ -18,3 +18,7 @@ To use MediaPlayer, please download from [the Releases page](https://github.com/
 # How it Works
 
 This project uses JavaFX to play the audio and Swing to render the buttons. The reason why I did not use JavaFX for the UI is because Swing is just easier.
+
+# Credit
+
+Some snippits of code were written by Claude to fix bugs, but everything else was written and drawn by me.
